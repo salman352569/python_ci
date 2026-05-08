@@ -5,11 +5,16 @@ pipeline {
     stages {
         stage ( 'checkout code ') {
             steps {
-                git 'https://github.com/salman352569/python_ci.git'
+                git branch: 'main', url: 'https://github.com/salman352569/python_ci.git'
+            }
+        }
+        stage ( 'Verify Files') {
+            steps {
+                sh 'ls -ltr'
             }
         }
 
-        stage ( 'Build Docker image') {
+        stage ( 'Build Docker Image') {
             steps {
                 sh 'docker build -t python-ci-lab .'
             }
